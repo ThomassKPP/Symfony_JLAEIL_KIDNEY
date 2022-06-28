@@ -1,0 +1,70 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <style>
+
+    body {
+       background: rgb(58,12,163);
+    background: radial-gradient(circle, rgba(58,12,163,1) 0%, rgba(67,97,238,1) 50%, rgba(76,201,240,1) 100%);
+    }
+
+    body {
+       background: rgb(58,12,163);
+    background: radial-gradient(circle, rgba(58,12,163,1) 0%, rgba(67,97,238,1) 50%, rgba(76,201,240,1) 100%);
+    }
+    tr {
+        text-align: center;
+    }
+    th ,td{
+        font-family : Montserrat;
+        text-align : center;
+        padding-right : 100px;
+        color : white;
+    }
+    a {
+        text-align : center;
+        color : white;
+    }
+    h1{
+        color : White;
+        font-family : Montserrat;
+        margin-top : 10%;
+        display : flex;
+        margin-bottom : 50px;
+        justify-content: center;
+    }
+    table{
+        display: flex;
+        justify-content: center;
+    }
+
+    </style>
+
+
+    <h1>{{ article.nom }}</h1>
+
+    <table>
+        <tr>
+            <th>Titre</th>
+            <th>Auteur</th>
+            <th>Nom</th>
+            <th>Contenu</th>
+            <th>Date</th>
+        </tr>
+
+            <tr>
+                <td>{{ article.titre }}</td>
+                <td>{{ article.auteur }}</td>
+                <td>{{ article.nom }}</td>
+                <td>{{ article.contenu }}</td>
+                <td>{{ article.date }}</td>
+                
+                {% if is_granted('ROLE_ADMIN') %}
+                <td><a href="{{ path('article_update', {'id': article.id}) }}">Update</a></td>
+                <td><a href="{{ path('article_delete', {'id': article.id, 'token':csrf_token('delete'~article.id)}) }}">Delete</a></td>
+                {% endif %}
+
+            </tr>
+    </table>
+{% endblock %}
+

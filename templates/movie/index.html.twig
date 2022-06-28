@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des musiques{% endblock %}
+
+
+
+{% block body %}
+<center>
+
+    <h1>Liste des musiques</h1>
+
+    <table>
+        <tr>
+            <th>Nom</th>
+            <th>Durée</th>
+            <th>Artiste</th>
+            <th>Style</th>
+            
+        </tr>
+        {% for movie in movies %}
+            <tr>
+                <td>{{ movie.name }}</td>
+                <td>{{ movie.duration }} minutes</td>
+                <td>{{ movie.artiste }} </td>
+                <td>{{ movie.style }} </td>
+                <td><a href="{{ path('movie_show', {'id': movie.id}) }}">Voir</a></td>
+
+            </tr>
+            
+        {% endfor %}
+
+        <style>
+            .contain{
+                text-align: center;
+            }
+        </style>
+            {% if is_granted('ROLE_ADMIN') %}
+                <td class="contain"><a href="{{ path('movie_create') }}">Ajouter</a></td>
+            {% endif %}
+           
+        
+    </table>
+
+</center>
+
+{% endblock %}

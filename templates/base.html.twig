@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
+        {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
+        {% block stylesheets %}
+            {#{ encore_entry_link_tags('app') }#}
+        {% endblock %}
+
+        {% block javascripts %}
+            {#{ encore_entry_script_tags('app') }#}
+        {% endblock %}
+    </head>
+    <body>
+        <style>
+            body {
+        background: rgb(58,12,163);
+        background: radial-gradient(circle, rgba(58,12,163,1) 0%, rgba(67,97,238,1) 50%, rgba(76,201,240,1) 100%);
+    }
+    tr {
+        text-align: center;
+    }
+    th ,td{
+        font-family : Montserrat;
+        text-align : center;
+        padding-right : 100px;
+        color : white;
+    }
+    a {
+        text-align : center;
+        color : white;
+    }
+    h1{
+        color : White;
+        font-family : Montserrat;
+        margin-top : 10%;
+    }
+        </style>
+
+        {% include "base/nav.html.twig" %}
+        {% block body %}{% endblock %}
+    </body>
+</html>

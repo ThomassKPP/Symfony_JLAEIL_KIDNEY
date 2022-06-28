@@ -1,0 +1,69 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifier un nouveau film{% endblock %}
+
+{% block body %}
+<style>
+label{
+    margin-bottom: 10px;
+    color : White;
+    font-family : Montserrat;
+    margin-right : 10px;
+}
+input{
+     font-family: 'Montserrat', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.025rem;
+    font-style: normal;
+    color: #EF2D56;
+    background-color: #FFFFFF;
+    border-radius: 1.25rem;
+    -webkit-border-radius: 1.25rem;
+    -moz-border-radius: 1.25rem;
+    padding: 0.35rem 0.75rem;
+    border-style: solid;
+    border-width: 0.125rem;
+    border-color: #EF2D56;
+}
+div:not(.movie_releaseDate) {
+    margin-bottom: 10px;
+}
+
+button{
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.025rem;
+    font-style: normal;
+    color: #EF2D56;
+    background-color: #FFFFFF;
+    border-radius: 1.25rem;
+    -webkit-border-radius: 1.25rem;
+    -moz-border-radius: 1.25rem;
+    padding: 0.35rem 0.75rem;
+    border-style: solid;
+    border-width: 0.125rem;
+    border-color: #EF2D56;
+    align-self: center;
+}
+.container{
+    text-align: center;
+
+}
+
+</style>
+    <div class="container">
+
+
+    <h1>Modifier un nouveau film</h1>
+
+    {{form_start(form)}}
+    {{form_rest(form)}}
+    <button type=\"submit\">Modifier</button>
+    {{form_end(form)}}
+
+    </div>
+
+{% endblock %}
+

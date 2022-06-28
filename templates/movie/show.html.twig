@@ -1,0 +1,70 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ movie.name }}{% endblock %}
+
+{% block body %}
+    <style>
+
+    body {
+       background: rgb(58,12,163);
+    background: radial-gradient(circle, rgba(58,12,163,1) 0%, rgba(67,97,238,1) 50%, rgba(76,201,240,1) 100%);
+    }
+
+    body {
+       background: rgb(58,12,163);
+    background: radial-gradient(circle, rgba(58,12,163,1) 0%, rgba(67,97,238,1) 50%, rgba(76,201,240,1) 100%);
+    }
+    tr {
+        text-align: center;
+    }
+    th ,td{
+        font-family : Montserrat;
+        text-align : center;
+        padding-right : 100px;
+        color : white;
+    }
+    a {
+        text-align : center;
+        color : white;
+    }
+    h1{
+        color : White;
+        font-family : Montserrat;
+        margin-top : 10%;
+        display : flex;
+        margin-bottom : 50px;
+        justify-content: center;
+    }
+    table{
+        display: flex;
+        justify-content: center;
+    }
+
+    </style>
+
+
+    <h1>{{ movie.name }}</h1>
+
+    <table>
+        <tr>
+            <th>Nom</th>
+            <th>Durée</th>
+            <th>Artiste</th>
+            <th>Style</th>
+        </tr>
+
+            <tr>
+                <td>{{ movie.name }}</td>
+                <td>{{ movie.duration }} minutes</td>
+                <td>{{ movie.artiste }}</td>
+                <td>{{ movie.style }}</td>
+                <td> <iframe style="border-radius:12px" src="{{movie.trailer}}" width="100%" height="120px" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe> </td>
+                
+                {% if is_granted('ROLE_ADMIN') %}
+                <td><a href="{{ path('movie_update', {'id': movie.id}) }}">Update</a></td>
+                <td><a href="{{ path('movie_delete', {'id': movie.id, 'token':csrf_token('delete'~movie.id)}) }}">Delete</a></td>
+                {% endif %}
+            </tr>
+    </table>
+{% endblock %}
+
